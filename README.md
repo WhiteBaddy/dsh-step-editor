@@ -5,6 +5,12 @@ DSH 插件：**按步骤**修剪模型上下文 / 分支会话。
 > 状态：**v0.1.0 发布准备完成**（包名 `dsh-step-editor`、打包与独立安装已验证），待 npm 凭据执行发布；分支已验收，截断/设置/轨迹的 GUI 验收待补。
 > 起因：读图步骤把请求顶爆网关，而该错误不被 DSH 识别为 context-overflow，compaction 不触发，会话卡死（详见 `docs/00-feasibility.md` §1）。
 
+## 安装
+
+- GitHub 直装（已发布）：在插件安装框粘贴 `https://github.com/WhiteBaddy/dsh-step-editor`
+- npm：`dsh-step-editor`（发布待 registry 凭据）
+- 搜索安装：开启「自定义插件索引」后添加 `https://whitebaddy.github.io/dsh-step-editor/index.json`（需仓库先开启 GitHub Pages）
+
 ## 现在能做什么
 
 ```

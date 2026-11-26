@@ -59,6 +59,14 @@ npm publish --registry https://<internal-registry> --access public
 
 ## 3.5 通过 GitHub 分发（无需 npm 账号）
 
+> 本仓库的实际发布信息（2026-11-26）：
+> - 仓库：`https://github.com/WhiteBaddy/dsh-step-editor`
+> - 插件提交：`2cbc989ab43622a7b7e43038c3387f2479c57201`
+> - 直装 spec：`https://github.com/WhiteBaddy/dsh-step-editor`
+> - 索引：仓库根目录 `index.json` + `icons/`；开启 Pages（main / root）后为
+>   `https://whitebaddy.github.io/dsh-step-editor/index.json`
+> - 状态：Git 直装已在独立工程实测；Pages 待仓库 Settings 开启。
+
 ### A. 直接 Git 安装（最快）
 
 1. 把仓库推成**公开** GitHub 仓库，包放在仓库根（与 `package.json` 同级）。
@@ -81,8 +89,8 @@ https://github.com/<user>/dsh-step-editor#<40 位 commit SHA>
 如果希望“搜名字就装”，把索引和图标放到 GitHub Pages：
 
 ```text
-site/index.json
-site/icons/dsh-step-editor.svg
+index.json
+icons/dsh-step-editor.svg
 ```
 
 `index.json` 示例（`commit` 填 push 后的 `git rev-parse HEAD`）：
@@ -115,10 +123,10 @@ site/icons/dsh-step-editor.svg
 }
 ```
 
-发布：仓库 Settings → Pages，选择 `main` 分支的 `/site` 目录（或把 `site/` 内容放到 `/docs`）。索引 URL 形如：
+发布：仓库 Settings → Pages → Deploy from a branch，选择 `main` 的 **/(root)**。索引 URL 为：
 
 ```text
-https://<user>.github.io/dsh-step-editor/index.json
+https://whitebaddy.github.io/dsh-step-editor/index.json
 ```
 
 用户端：插件 → 实验性插件 → 打开「自定义插件索引」→ 发现 → 添加索引源 → 填上面的 URL → 搜索「步骤截断」或 `dsh-step-editor` 安装。

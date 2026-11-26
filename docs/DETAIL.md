@@ -36,6 +36,6 @@
 
 ## 安装
 
-在插件管理器的安装框输入 `dsh-step-editor`，确认 registry 后安装；刷新页面后会话头部出现「步骤」按钮。
+在插件管理器的安装框输入 `dsh-step-editor`（npm），或粘贴 `https://github.com/WhiteBaddy/dsh-step-editor`（GitHub）；安装后刷新页面，会话头部出现「步骤」按钮。
 
 当前版本：v0.1.0（命令、面板、分支、设置页均已实现）。
