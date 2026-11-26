@@ -1,0 +1,7 @@
+{
+  "meta": {
+    "title": "Step truncate",
+    "description": "Cut model context from a step to the end of the session, or branch the session before a step.",
+    "detail": "docs/DETAIL.md"
+  }
+}

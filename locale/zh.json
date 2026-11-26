@@ -1,0 +1,7 @@
+{
+  "meta": {
+    "title": "步骤截断",
+    "description": "按步骤把模型上下文从指定位置截断到会话末尾，或在某一步之前分支会话。",
+    "detail": "docs/DETAIL.md"
+  }
+}
