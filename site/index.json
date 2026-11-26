@@ -1,0 +1,30 @@
+{
+  "format": 1,
+  "title": { "en": "Step truncate", "zh": "步骤截断" },
+  "plugins": [
+    {
+      "name": "dsh-step-editor",
+      "title": { "en": "Step truncate", "zh": "步骤截断" },
+      "description": {
+        "en": "Truncate model context from a step to the end of the session, or branch the session before a step.",
+        "zh": "按步骤把模型上下文截断到会话末尾，或在某一步之前分支会话。"
+      },
+      "icon": "icons/dsh-step-editor.svg",
+      "author": "WhiteBaddy",
+      "homepage": "https://github.com/WhiteBaddy/dsh-step-editor#readme",
+      "repository": { "url": "https://github.com/WhiteBaddy/dsh-step-editor" },
+      "versions": [
+        {
+          "version": "0.1.0",
+          "publishTimestamp": 1795672329,
+          "source": {
+            "type": "git",
+            "url": "https://github.com/WhiteBaddy/dsh-step-editor",
+            "commit": "2cbc989ab43622a7b7e43038c3387f2479c57201"
+          },
+          "engines": { "dsh": ">=0.2.2-rc.5 <0.3.0" }
+        }
+      ]
+    }
+  ]
+}
