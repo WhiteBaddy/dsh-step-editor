@@ -1,6 +1,6 @@
 {
   "name": "dsh-step-editor",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "type": "module",
   "description": "Step-level context truncation and branching for DSH",
   "exports": {
@@ -35,14 +35,23 @@
     "README.md"
   ],
   "scripts": {
-    "test": "node --test test/step-index.test.js test/plugin.test.js test/client-wiring.test.js"
+    "test": "node --test test/step-index.test.js test/plugin.test.js test/client-wiring.test.js test/manifest.test.js"
   },
   "license": "MIT",
   "engines": {
-    "dsh": ">=0.2.2-rc.5 <0.3.0",
+    "dsh": ">=0.2.2-rc.1 <0.3.0",
     "node": ">=20"
   },
   "peerDependencies": {
     "@deepseek-ai/schemastery": "^3.19.0"
+  },
+  "author": "WhiteBaddy",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/WhiteBaddy/dsh-step-editor.git"
+  },
+  "homepage": "https://github.com/WhiteBaddy/dsh-step-editor#readme",
+  "bugs": {
+    "url": "https://github.com/WhiteBaddy/dsh-step-editor/issues"
   }
 }

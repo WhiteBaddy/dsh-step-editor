@@ -37,6 +37,8 @@ const CSS = `
 .dse-btn-primary{border-color:var(--dsw-alias-button-info-fill);background:var(--dsw-alias-button-info-fill);color:var(--dsw-alias-label-on-color)}
 .dse-btn-danger{border-color:var(--dsw-alias-state-error-primary);color:var(--dsw-alias-state-error-primary)}
 .dse-empty{padding:40px 16px;text-align:center;color:var(--dsw-alias-label-tertiary);font-size:12px}
+.dse-more{display:block;width:100%;margin:4px 0 8px;padding:6px 10px;border:1px dashed var(--dsw-alias-border-l2);border-radius:8px;background:transparent;color:var(--dsw-alias-label-secondary);font:inherit;font-size:12px;cursor:pointer}
+.dse-more:hover{background:var(--dsw-alias-interactive-bg-hover)}
 .dse-confirm{padding:20px 20px 16px}
 .dse-confirm-title{font-size:14px;font-weight:600;line-height:22px}
 .dse-confirm-body{margin-top:10px;font-size:13px;line-height:20px;color:var(--dsw-alias-label-primary)}
@@ -59,8 +61,9 @@ window.__ModuleLoader__.load({
       'action.tooltip': '按步骤查看并截断上下文',
       'panel.title': '步骤 / 上下文',
       'panel.empty': '还没有可操作的步骤。',
-      'panel.hint': '截断只改变模型可见的上下文；日志与聊天记录保留，且不可撤销。',
+      'panel.hint': '截断只改变模型可见的上下文；日志与聊天记录保留，且不可撤销。选某轮第 1 步即整轮删除。',
       'panel.close': '关闭',
+      'panel.more': '显示更早的 {count} 步',
       'panel.running': '当前轮仍在运行；停止后才能截断或分支。',
       'row.turn': '第 {turn} 轮',
       'row.step': '第 {step} 步',
@@ -87,8 +90,9 @@ window.__ModuleLoader__.load({
       'action.tooltip': 'Inspect and truncate context by step',
       'panel.title': 'Steps / context',
       'panel.empty': 'No steps to act on yet.',
-      'panel.hint': 'Truncation changes only the model-visible context; the log and transcript keep the original messages, and it cannot be undone.',
+      'panel.hint': 'Truncation changes only the model-visible context; the log and transcript keep the original messages, and it cannot be undone. Pick step 1 of a turn to delete the whole turn.',
       'panel.close': 'Close',
+      'panel.more': 'Show {count} earlier steps',
       'panel.running': 'The current turn is still running; stop it before truncating or branching.',
       'row.turn': 'Turn {turn}',
       'row.step': 'Step {step}',
@@ -175,6 +179,10 @@ window.__ModuleLoader__.load({
 
     function StepEditorPanel({ sessionId, view, t, ctx, canFork, onClose }) {
       const steps = view?.steps ?? []
+      const WINDOW = 80
+      const [visible, setVisible] = useState(WINDOW)
+      const start = Math.max(0, steps.length - visible)
+      const shown = steps.slice(start)
       const [selected, setSelected] = useState(null)
       const [mode, setMode] = useState('truncate')
       const [busy, setBusy] = useState(false)
@@ -276,7 +284,14 @@ window.__ModuleLoader__.load({
       function renderList() {
         if (steps.length === 0) return h('div', { className: 'dse-empty' }, t('panel.empty'))
         return h('div', { className: 'dse-list', ref: listRef },
-          steps.map((entry, index) => h('div', {
+          start > 0 && h('button', {
+            type: 'button',
+            className: 'dse-more',
+            onClick: () => setVisible(count => count + WINDOW),
+          }, t('panel.more', { count: start })),
+          shown.map((entry, offset) => {
+            const index = start + offset
+            return h('div', {
             key: `${entry.turn}:${entry.step}`,
             className: `dse-row${entry.status === 'shadowed' ? ' dse-row-off' : ''}`,
           },
@@ -298,8 +313,9 @@ window.__ModuleLoader__.load({
               disabled: busy || running || !canFork || entry.status !== 'closed',
               onClick: () => choose(index, 'branch'),
             }, t('row.branch')),
-          )),
-        ))
+          ))
+          }),
+        )
       }
 
       return h('div', { className: 'dse-backdrop', onMouseDown: (event) => { if (event.target === event.currentTarget) onClose() } },
