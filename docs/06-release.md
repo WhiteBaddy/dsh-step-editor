@@ -1,6 +1,6 @@
 # 06 发布说明
 
-> 状态：发布准备完成，待 registry 凭据 ｜ 版本：v1.0 ｜ 最后更新：2026-11-26
+> 状态：0.1.1 已推 GitHub，待 npm 发布 ｜ 版本：v1.1 ｜ 最后更新：2026-11-28
 > 上游：[05-integration-test.md](05-integration-test.md)
 
 ## 1. 包元数据（已是可发布形态）
@@ -8,15 +8,15 @@
 | 字段 | 值 |
 | --- | --- |
 | name | `dsh-step-editor` |
-| version | `0.1.0` |
+| version | `0.1.1` |
 | license | MIT |
-| engines | `dsh: ">=0.2.2-rc.5 <0.3.0"`，`node: ">=20"` |
+| engines | `dsh: ">=0.2.2-rc.1 <0.3.0"`，`node: ">=20"` |
 | dependencies | `zod ^4.6.6` |
 | peerDependencies | `@deepseek-ai/schemastery ^3.19.0`（由 DSH 提供） |
 | files | `index.js`、`client.js`、`step-index.js`、patch、locale、icon、`docs/DETAIL.md`、README |
 | 安装方式 | 插件管理器安装框输入包名 → registry 解析 → 安装 |
 
-`npm pack` 结果：**10 个文件，13.7 KB**；独立临时工程安装后 `import('dsh-step-editor')` 可正常加载 `apply` 与 `Config`（ISSUE-008 的依赖解析部分已闭环）。
+`npm pack` 结果：**11 个文件，15.1 KB**；独立临时工程安装后 `import('dsh-step-editor')` 可正常加载 `apply` 与 `Config`（ISSUE-008 的依赖解析部分已闭环）。0.1.1 在 rc.1 的 `dsh-session` 上核心测试全绿。
 
 ## 2. 发布前检查
 
@@ -61,9 +61,9 @@ npm publish --registry https://<internal-registry> --access public
 
 > 本仓库的实际发布信息（2026-11-26）：
 > - 仓库：`https://github.com/WhiteBaddy/dsh-step-editor`
-> - 插件提交：`2cbc989ab43622a7b7e43038c3387f2479c57201`
+> - 插件提交：`ccfe43882a29066fb224c1792cd42665186e4748`（0.1.1）
 > - 直装 spec：`https://github.com/WhiteBaddy/dsh-step-editor`
-> - 索引：仓库根目录 `index.json` + `icons/`；开启 Pages（main / root）后为
+> - 索引：仓库根目录 `index.json` + `icons/`，版本 0.1.1；开启 Pages（main / root）后为
 >   `https://whitebaddy.github.io/dsh-step-editor/index.json`
 > - 状态：Git 直装已在独立工程实测；Pages 待仓库 Settings 开启。
 
@@ -170,3 +170,4 @@ git rev-parse HEAD   # 填进 index.json 的 commit
 | 日期 | 版本 | 变更 |
 | --- | --- | --- |
 | 2026-11-26 | v1.0 | 发布准备：改名、元数据、打包与独立安装验证、发布命令 |
+| 2026-11-28 | v1.1 | 0.1.1：rc.1 兼容、面板窗口化、元数据与索引更新 |

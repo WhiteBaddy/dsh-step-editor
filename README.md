@@ -66,6 +66,7 @@ node --test test/step-index.test.js test/plugin.test.js
 | [docs/02-plan.md](docs/02-plan.md) | Stage 2 开发计划 + Stage 3 追溯矩阵（已锁定） |
 | [docs/03-stage-01-host.md](docs/03-stage-01-host.md) | Stage 4 阶段一：Host 基础（已完成） |
 | [docs/03-stage-02-client.md](docs/03-stage-02-client.md) | Stage 4 阶段二：Client 界面（实现完成，待验收） |
+| [docs/03-stage-03-rc1.md](docs/03-stage-03-rc1.md) | Stage 4 阶段三：0.1.1 rc.1 兼容维护 |
 | [docs/05-integration-test.md](docs/05-integration-test.md) | Stage 5 集成测试与总结（部分通过） |
 | [docs/06-release.md](docs/06-release.md) | 发布说明：元数据、命令、安装方式 |
 | [docs/appendix/poc-surface-replace.mjs](docs/appendix/poc-surface-replace.mjs) | Stage 0 PoC |
